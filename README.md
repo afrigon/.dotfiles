@@ -32,9 +32,7 @@ source ~/.dotfiles/macos.sh
 
 ### Notes
 
-The init script will install the content of packages and call the other scripts (link, macos).
-
-The file `configs/.extra` is automaticly included and won't be commited so credentials and signing keys can go there.
+The init script will install the content of packages and call the other scripts (link, macos). The file `configs/.extra` is automaticly included and won't be commited so credentials and signing keys can go there.
 
 ## TODO
 
@@ -45,7 +43,7 @@ The file `configs/.extra` is automaticly included and won't be commited so crede
 
 Most of these configuration are stolen or adapted from these people.
 
-- Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
 - Ian Bouchard [PwnBox](https://github.com/Corb3nik/PwnBox)
 - Lars Kappert [awesome-dotfiles](https://github.com/webpro/dotfiles)
+- Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
 
