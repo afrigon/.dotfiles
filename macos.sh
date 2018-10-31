@@ -39,7 +39,7 @@ dockutil --no-restart --add /Applications/Safari.app
 dockutil --no-restart --add /Applications/Google\ Chrome.app
 dockutil --no-restart --add /Applications/iTunes.app
 dockutil --no-restart --add /Applications/Discord.app
-dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
+dockutil --no-restart --add /Applications/Visual\ Studio\ Code\ -\ Insiders.app
 dockutil --no-restart --add /Applications/Xcode.app
 dockutil --no-restart --add /Applications/Calendar.app
 dockutil --no-restart --add /Applications/Reminders.app
