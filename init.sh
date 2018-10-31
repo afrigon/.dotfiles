@@ -18,7 +18,7 @@ mkdir -p "$HOME/bin"
 
 # Install updates
 echo_running "Installing updates..."
-#sudo softwareupdate -i -a
+sudo softwareupdate -i -a
 echo_ok
 
 # Install/Update brew
