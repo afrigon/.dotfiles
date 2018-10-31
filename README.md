@@ -34,6 +34,10 @@ source ~/.dotfiles/macos.sh
 
 The init script will install the content of packages and call the other scripts (link, macos).
 
+## TODO
+
+- Add apt support for the init script.
+
 ## Credits
 
 Most of these configuration are stolen or adapted from these people.
