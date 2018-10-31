@@ -7,12 +7,15 @@ cd "$(dirname "${BASH_SOURCE}")";
 source ./lib.sh;
 
 # Update the dotfiles repository
-git pull origin master;
-
+git pull -q origin master;
 
 # Create symlink to the config files
-ln -s ./configs/* "$HOME"
-
+for file in $(pwd -P)/configs/.*
+do
+    [ -f "$file" ] || continue
+    ln -si "$file" "$HOME"
+done
+unset file
 
 # Unset helper functions
 unset ESC_SEQ COL_RESET COL_RED COL_GREEN COL_YELLOW;

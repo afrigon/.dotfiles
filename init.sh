@@ -7,7 +7,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 source ./lib.sh;
 
 # Update the dotfiles repository
-git pull origin master;
+git pull -q origin master;
 
 
 # Execute this entire file as sudo
