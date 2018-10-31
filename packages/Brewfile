@@ -1,0 +1,37 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+# Bash 4
+brew "bash"
+brew "bash-completion2"
+
+brew "coreutils"
+brew "moreutils"
+brew "findutils"
+brew "gnu-sed", args: ["with-default-names"]
+brew "wget", args: ["with-iri"]
+brew "gnupg"
+brew "grep"
+brew "openssh"
+brew "screen"
+brew "vim", args: ["with-override-system-vi"]
+brew ssh-copy-id
+
+brew "ascii"
+brew "cmake"
+brew "curl"
+brew "dockutil"
+brew "ffmpeg"
+brew "git-lfs"
+brew "lua"
+brew "make"
+brew "openssl"
+brew "python"
+brew "python@2"
+brew "tldr"
+brew "tmux"
+brew "tree"
+brew "vagrant"
+brew "mongodb"
+brew "webtorrent-cli"
+
