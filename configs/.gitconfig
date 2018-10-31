@@ -99,7 +99,11 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ll = log --pretty=oneline --graph --abbrev-commit
 
+	# Add all and commit with message
 	ca = !git add . && git commit -S -am		
+
+	# Push to master
+	pm = push origin master
 
 	# View the current working tree status using the short format
 	s = status -s
