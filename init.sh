@@ -18,11 +18,12 @@ mkdir -p "$HOME/bin"
 
 # Install updates
 echo_running "Installing updates..."
-sudo softwareupdate -i -a
+#sudo softwareupdate -i -a
 echo_ok
 
 # Install/Update brew
-if can_exec "brew" then
+if can_exec "brew"
+then
     echo_running "Updating brew..."
     brew update
    	brew upgrade
@@ -35,7 +36,8 @@ fi
 
 
 # Install git
-if ! can_exec "git" then
+if ! can_exec "git"
+then
     echo_running "Installing git..."
     brew install git
     echo_ok
@@ -49,10 +51,11 @@ echo_ok
 
 echo_running "Configuring brew packages..."
 # Switch to using brew-installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+if ! fgrep -q '/usr/local/bin/bash' /etc/shells
+then
+  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
+  chsh -s /usr/local/bin/bash
+fi
 echo_ok
 
 # Install casks
@@ -64,6 +67,9 @@ echo_running "Cleaning up brew"
 brew cleanup
 echo_ok
 
+
+# Hammerspoon setup
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.hammerspoon"
 
 # Install vscode packages
 for extension in $(cat packages/Codefile)
@@ -77,19 +83,24 @@ unset extension
 # Install node packages
 for package in $(cat packages/Npmfile)
 do
-    npm install -g "$package"
+    sudo npm install -g "$package"
 done
 unset package
 
 
 # Set macos system settings
-if is_mac then
+if is_macos
+then
     source ./macos.sh
 fi
 
 
 # Create symbolic links to config files
+echo_running "Linking dotfiles..."
 source ./link.sh
+echo_ok
+
+echo_ok "The initialization is complete, you might want to reboot your system for changes to apply correctly."
 
 # Unset helper functions
 unset ESC_SEQ COL_RESET COL_RED COL_GREEN COL_YELLOW;

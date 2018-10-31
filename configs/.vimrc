@@ -18,6 +18,8 @@ endif
 set backupskip=/tmp/*,/private/tmp/*
 
 
+set backspace=2
+
 " Optimize for fast terminal connections
 set ttyfast
 
@@ -28,7 +30,7 @@ set nocompatible
 set wildmenu
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
+" set clipboard=unnamed
 set relativenumber
 syntax on
 set tabstop=4

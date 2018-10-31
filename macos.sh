@@ -217,7 +217,7 @@ tell application "Terminal"
 	set initialOpenedWindows to id of every window
 
 	(* Open the custom theme so that it gets added to the list of available terminal themes (note: this will open two additional terminal windows). *)
-	do shell script "open '$(pwd -P)/init/" & themeName & ".terminal'"
+	do shell script "open '$(pwd -P)/packages/manual/" & themeName & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1

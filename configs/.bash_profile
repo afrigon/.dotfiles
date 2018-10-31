@@ -1,8 +1,12 @@
-#!/usr/bin/env bash
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+
+# Required variable for the gpg signing tool
 export GPG_TTY=$(tty);
+
+# 010 Editor
+export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
 
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -45,4 +49,6 @@ if [ -f '/Users/frigon/google-cloud-sdk/completion.bash.inc' ]; then source '/Us
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
+
+rm -R "$HOME/.config/SweetScape"
 
