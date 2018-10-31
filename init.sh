@@ -25,7 +25,7 @@ echo_ok
 if can_exec "brew" then
     echo_running "Updating brew..."
     brew update
-    brew upgrade
+   	brew upgrade
     echo_ok
 else
     echo_running "Installing brew..."
