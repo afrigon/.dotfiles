@@ -12,6 +12,8 @@ alias -- -="cd -"
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias p="cd ~/projects"
+
+# Git
 alias g="git"
 
 # npm

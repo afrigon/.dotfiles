@@ -1,0 +1,136 @@
+[user]
+	name = Alexandre Frigon
+	email = alexandre.frigon.1@gmail.com
+	signingkey = 8F5734EB44623F78
+
+[github]
+	user = afrigon
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+	
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
+
+	# Transform incoming file with CRLF ending into LF ending. 
+	autocrlf = input
+
+	# Ignore file permissions changes
+	filemode = false
+
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[commit]
+	# https://help.github.com/articles/signing-commits-using-gpg/
+	gpgsign = true
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[push]
+	# https://git-scm.com/docs/git-config#git-config-pushdefault
+	default = simple
+	# Make `git push` push relevant annotated tags when pushing branches out.
+	followTags = true
+
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[grep]
+	lineNumber = true
+
+[credential]
+	helper = osxkeychain
+
+[diff]
+	renames = copies
+	indentHeuristic = true
+
+[difftool]
+	prompt = false
+
+[diff "bin"]
+	# Use `hexdump` to diff binary files
+	textconv = hexdump -v -C
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[mergetool]
+	prompt = false
+
+[fetch]
+	prune = true
+
+[alias]
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = log --pretty=oneline --graph --abbrev-commit
+
+	ca = !git add . && git commit -S -am		
+
+	# View the current working tree status using the short format
+	s = status -s
+
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	# List aliases
+	aliases = config --get-regexp alias
+
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
+
+	# Remove the old tag with this name and tag the latest commit with it.
+	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+	# Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
+	# Apply modification in .gitignore file
+	unstage = reset --hard HEAD
+
+	# Commit all changes in case of emergency
+	dump = !git checkout -b stash && git add . && git commit -av && push push origin stash
+
