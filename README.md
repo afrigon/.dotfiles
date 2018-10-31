@@ -34,6 +34,8 @@ source ~/.dotfiles/macos.sh
 
 The init script will install the content of packages and call the other scripts (link, macos).
 
+The file `configs/.extra` is automaticly included and won't be commited so credentials and signing keys can go there.
+
 ## TODO
 
 - Add apt support for the init script.
