@@ -63,6 +63,8 @@ echo_running "Installing brew casks..."
 brew bundle --file=./packages/Caskfile
 echo_ok
 
+mv /usr/local/bin/code-insiders /usr/local/bin/code
+
 echo_running "Cleaning up brew"
 brew cleanup
 echo_ok
