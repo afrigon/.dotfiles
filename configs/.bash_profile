@@ -50,5 +50,5 @@ if [ -f '/Users/frigon/google-cloud-sdk/completion.bash.inc' ]; then source '/Us
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
 
-rm -R "$HOME/.config/SweetScape"
+rm -Rf "$HOME/.config/SweetScape"
 
