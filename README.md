@@ -38,6 +38,7 @@ The init script will install the content of packages and call the other scripts 
 
 - Add apt support for the init script.
 - Create script for updates only.
+- Fix hammerspoon
 
 ## Credits
 
