@@ -16,6 +16,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 mkdir -p "$HOME/bin"
 
+# Instal Xcode tools
+echo_running "Installing xcode tools..."
+xcode-select --install
+echo_ok
+
 # Install updates
 echo_running "Installing updates..."
 sudo softwareupdate -i -a
