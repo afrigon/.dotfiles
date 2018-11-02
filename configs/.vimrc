@@ -47,9 +47,6 @@ set incsearch
 " Status line
 set laststatus=2
 
-" enable mouse
-set mouse=a
-
 " Disable error bells
 set noerrorbells
 
