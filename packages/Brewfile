@@ -32,6 +32,7 @@ brew "python@2"
 brew "tldr"
 brew "tmux"
 brew "tree"
+brew "unar"
 brew "mongodb"
 brew "webtorrent-cli"
 
