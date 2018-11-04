@@ -133,7 +133,9 @@
 	contributors = shortlog --summary --numbered
 
 	# Apply modification in .gitignore file
-	unstage = reset --hard HEAD
+	unstage = rm -r --cached .
+
+	flush = reset --hard HEAD
 
 	# Commit all changes in case of emergency
 	dump = !git checkout -b stash && git add . && git commit -av && push push origin stash
