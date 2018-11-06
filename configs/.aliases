@@ -120,5 +120,5 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo -e ${PATH//:/\\n}'
+alias paths="echo -e ${PATH//:/\\n}"
 
