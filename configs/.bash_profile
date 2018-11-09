@@ -1,6 +1,6 @@
 
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+export PATH="/usr/local/sbin:$HOME/bin:$PATH";
 
 # Required variable for the gpg signing tool
 export GPG_TTY=$(tty);
