@@ -100,10 +100,12 @@
 	ll = log --pretty=oneline --graph --abbrev-commit
 
 	# Add all and commit with message
-	ca = !git add . && git commit -S -am		
+	ca = !git add . && git commit -am		
 
 	# Push to master
 	pm = push origin master
+	# Push to current branch
+	ph = push origin HEAD
 
 	# View the current working tree status using the short format
 	s = status -s
@@ -138,5 +140,5 @@
 	flush = reset --hard HEAD
 
 	# Commit all changes in case of emergency
-	dump = !git checkout -b stash && git add . && git commit -av && push push origin stash
+	dump = !git checkout -b stash && git add . && git commit -av && git push origin stash
 
