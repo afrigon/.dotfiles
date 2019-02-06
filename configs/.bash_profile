@@ -1,12 +1,15 @@
 
 # Add `~/bin` to the `$PATH`
-export PATH="/usr/local/sbin:$HOME/bin:$PATH";
+export PATH="$PATH:/usr/local/sbin:$HOME/bin";
 
 # Required variable for the gpg signing tool
 export GPG_TTY=$(tty);
 
 # 010 Editor
 export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
+
+# fastlane
+export PATH="$PATH:$HOME/.fastlane/bin"
 
 # temp
 export PATH="$PATH:$HOME/.local/bin"
