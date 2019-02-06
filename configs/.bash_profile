@@ -8,6 +8,9 @@ export GPG_TTY=$(tty);
 # 010 Editor
 export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
 
+# temp
+export PATH="$PATH:$HOME/.local/bin"
+
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
