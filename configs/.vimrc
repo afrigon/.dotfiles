@@ -61,6 +61,8 @@ set showmode
 " Show the filename in the window titlebar
 set title
 
+set autoindent
+
 " Show the (partial) command as it’s being typed
 set showcmd
 
