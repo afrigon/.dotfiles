@@ -12,7 +12,6 @@ git pull -q origin master;
 # Create symlink to the config files
 for file in $(pwd -P)/configs/.*
 do
-	[ $(basename "$file") = ".hammerspoon" ] ||
 	[ -f "$file" ] ||
 	continue
     ln -sf "$file" "$HOME"

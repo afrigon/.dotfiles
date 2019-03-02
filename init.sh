@@ -75,9 +75,6 @@ brew cleanup
 echo_ok
 
 
-# Hammerspoon setup
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.hammerspoon"
-
 # Install vscode packages
 for extension in $(cat packages/Codefile)
 do
