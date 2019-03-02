@@ -1,9 +1,10 @@
 
-# Add `~/bin` to the `$PATH`
-export PATH="$PATH:/usr/local/sbin:$HOME/bin";
 
 # Required variable for the gpg signing tool
 export GPG_TTY=$(tty);
+
+# ~/bin
+export PATH="$PATH:/usr/local/sbin:$HOME/bin";
 
 # 010 Editor
 export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
@@ -58,7 +59,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 rm -Rf "$HOME/.config/SweetScape"
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#	exec tmux
+#fi
 
