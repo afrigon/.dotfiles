@@ -43,7 +43,6 @@ set modelines=4
 
 " Search
 set hlsearch
-set ignorecase
 set incsearch
 
 " Status line
@@ -79,4 +78,36 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'rust-lang/rust.vim'
+"Plug 'vim-syntastic/syntastic'
+Plug 'racer-rust/vim-racer'
+
+call plug#end()
+
+let g:rustfmt_autosave = 1
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+
+let g:racer_experimental_completer = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+
+
+au FileType rust nmap gr :w<Enter>:!cargo make --makefile /Users/frigon/projects/rust/tetanos/Makefile.toml run<Enter>

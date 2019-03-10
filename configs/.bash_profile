@@ -12,6 +12,9 @@ export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
 # fastlane
 export PATH="$PATH:$HOME/.fastlane/bin"
 
+#rust
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 # temp
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -63,3 +66,5 @@ rm -Rf "$HOME/.config/SweetScape"
 #	exec tmux
 #fi
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
