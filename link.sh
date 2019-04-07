@@ -18,6 +18,7 @@ do
 done
 unset file
 
+rm -rf "$HOME/.vim"
 cp -R ./configs/.vim "$HOME/.vim"
 
 # Unset helper functions

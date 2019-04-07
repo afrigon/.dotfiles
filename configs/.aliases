@@ -122,3 +122,7 @@ alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths="echo -e ${PATH//:/\\n}"
 
+# Mac Docker client app shortcut
+alias docker-server="open -a Docker"
+alias ida="open -a ida.app"
+alias ida64="open -a ida64.app"

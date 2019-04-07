@@ -7,8 +7,10 @@ cd "$(dirname "${BASH_SOURCE}")";
 source ./lib.sh;
 
 # Update the dotfiles repository
-git pull -q origin master;
-
+if can_exec "git"
+then
+    git pull -q origin master;
+fi
 
 # Execute this entire file as sudo
 sudo -v
@@ -39,7 +41,6 @@ else
     echo_ok
 fi
 
-
 # Install git
 if ! can_exec "git"
 then
@@ -47,7 +48,6 @@ then
     brew install git
     echo_ok
 fi
-
 
 # Install brew packages
 echo_running "Installing brew formulae..."
@@ -68,12 +68,13 @@ echo_running "Installing brew casks..."
 brew bundle --file=./packages/Caskfile
 echo_ok
 
+# rename vscode insider binary to code
 mv /usr/local/bin/code-insiders /usr/local/bin/code
 
+# Cleaning up brew
 echo_running "Cleaning up brew"
 brew cleanup
 echo_ok
-
 
 # Install vscode packages
 for extension in $(cat packages/Codefile)

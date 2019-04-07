@@ -31,3 +31,6 @@ function transfer() {
   rm -f $tmpfile;
 }
 
+function rex () {
+    wine $HOME/tools/Rex.exe "$@" 2> /dev/null
+}
