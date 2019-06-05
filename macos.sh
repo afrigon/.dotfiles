@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 osascript -e 'tell application "System Preferences" to quit'
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Move to the dotfile directory
 cd "$(dirname "${BASH_SOURCE}")";

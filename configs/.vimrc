@@ -14,16 +14,16 @@ endif
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
-
 set backspace=2
 
 " Optimize for fast terminal connections
 set ttyfast
 
-" Make Vim more useful
+" Make Vim drop vi compatibility
 set nocompatible
 
 " Enhance command-line completion$
+set path+=**
 set wildmenu
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -46,6 +46,7 @@ set shiftwidth=4
 set expandtab
 
 syntax on
+colorscheme slate
 
 " Respect modeline in files
 set modeline
@@ -99,12 +100,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
+" rust config
 let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
 
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
+
 

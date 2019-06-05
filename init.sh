@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Move to the dotfile directory
 cd "$(dirname "${BASH_SOURCE}")";
@@ -55,12 +55,20 @@ brew bundle --file=./packages/Brewfile
 echo_ok
 
 echo_running "Configuring brew packages..."
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells
+# Switch to using brew-installed zsh as default shell
+if ! fgrep -q '/bin/zsh' /etc/shells
 then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
-  chsh -s /usr/local/bin/bash
+  echo '/bin/zsh' | sudo tee -a /etc/shells
+  chsh -s /bin/zsh
 fi
+
+# fzf
+$(brew --prefix)/opt/fzf/install --bin
+
+# oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ./configs/zsh/frig.zsh-theme ~/.oh-my-zsh/custom/themes
+
 echo_ok
 
 # Install casks

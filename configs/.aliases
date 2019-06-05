@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -10,7 +10,7 @@ alias ~="cd ~" # `cd` is probably faster to type though
 # Shortcuts
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
-alias p="cd ~/projects"
+alias s="cd ~/src"
 
 # Git
 alias g="git"
@@ -65,6 +65,9 @@ alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias ipe="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Netstat -l
+alias ns="sudo lsof -iTCP -sTCP:LISTEN -n -P"
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -126,3 +129,6 @@ alias paths="echo -e ${PATH//:/\\n}"
 alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
 alias ida64="open -a ida64.app"
+
+# 
+alias ef='fzf --preview '\''bat --color "always" {}'\'' --bind='\''enter:execute(vim {})+abort'\'

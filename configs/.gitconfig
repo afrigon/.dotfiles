@@ -90,6 +90,7 @@
 
 [mergetool]
 	prompt = false
+    keepBackup = false
 
 [fetch]
 	prune = true
