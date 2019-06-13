@@ -12,6 +12,7 @@ brew "wget", args: ["with-iri"]
 brew "gnupg"
 brew "grep"
 brew "openssh"
+brew "reattach-to-user-namespace"
 brew "screen"
 brew "vim", args: ["with-override-system-vi"]
 brew "ssh-copy-id"
