@@ -30,4 +30,5 @@ cask "qlvideo"
 cask "quicklook-json"
 cask "suspicious-package"
 cask "webpquicklook"
+cask "wireshark"
 

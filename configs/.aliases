@@ -130,5 +130,8 @@ alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
 alias ida64="open -a ida64.app"
 
-# 
+# fzf viewer
 alias ef='fzf --preview '\''bat --color "always" {}'\'' --bind='\''enter:execute(vim {})+abort'\'
+
+# github token
+alias gt="cat ~/.github.token | pbcopy; pbpaste"

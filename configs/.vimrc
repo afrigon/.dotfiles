@@ -102,6 +102,8 @@ Plug 'racer-rust/vim-racer'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'terryma/vim-multiple-cursors'
+
 call plug#end()
 
 " rust config
