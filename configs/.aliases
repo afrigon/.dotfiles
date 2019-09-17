@@ -11,6 +11,7 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias s="cd ~/src"
+alias p="cd ~/pwnbox/shared"
 
 # Git
 alias g="git"
@@ -129,6 +130,7 @@ alias paths="echo -e ${PATH//:/\\n}"
 alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
 alias ida64="open -a ida64.app"
+alias binja="open -a Binary\ Ninja.app"
 
 # fzf viewer
 alias ef='fzf --preview '\''bat --color "always" {}'\'' --bind='\''enter:execute(vim {})+abort'\'

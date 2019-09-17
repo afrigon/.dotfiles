@@ -1,5 +1,12 @@
 set background=dark
 
+" Remove arrow key and add the jk shortcut for escape
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+nnoremap <Down> <nop>
+nnoremap <Up> <nop>
+inoremap jk <esc>
+
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 
@@ -79,6 +86,14 @@ set showcmd
 " Start scrolling 8 lines before the horizontal window border
 set scrolloff=8
 
+" mick stuff
+" Quick toggle last two jump places
+"nnoremap <leader><leader> :normal! ''<CR>
+
+" Add numbered movements to jump list
+"nnoremap <expr> k (v:count > 2 ? "m'" . v:count : '') . 'k'
+"nnoremap <expr> j (v:count > 2 ? "m'" . v:count : '') . 'j'
+
 " Automatic commands
 if has("autocmd")
     " Enable file type detection
@@ -97,21 +112,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-
+" go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" multi-cursor
 Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
-
-" rust config
-let g:rustfmt_autosave = 1
-let g:racer_experimental_completer = 1
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-
 
