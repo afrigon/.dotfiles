@@ -1,4 +1,4 @@
-# Required variable for the gpg signing tool
+# Require variable for the gpg signing tool
 export GPG_TTY=$(tty);
 
 # ~/bin
@@ -23,11 +23,7 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # Cross compilers
 export PATH="$HOME/opt/cross/bin:$PATH"
 
-# Java 8
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home"
-
-
-for file in ~/.{path,exports,aliases,functions,extra,fzf.zsh}; do
+for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -41,4 +37,3 @@ rm -Rf "$HOME/.config/SweetScape"
 #	exec tmux
 #fi
 
-if [ -e /Users/frigon/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/frigon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
