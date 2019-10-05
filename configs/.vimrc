@@ -7,9 +7,18 @@ nnoremap <Down> <nop>
 nnoremap <Up> <nop>
 inoremap jk <esc>
 
+" Window jumps
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Natural split direction
+set splitbelow
+set splitright
+
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -51,6 +60,7 @@ augroup END
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
 
 syntax on
 colorscheme slate
@@ -78,13 +88,14 @@ set showmode
 " Show the filename in the window titlebar
 set title
 
-set autoindent
-
 " Show the (partial) command as it’s being typed
 set showcmd
 
 " Start scrolling 8 lines before the horizontal window border
 set scrolloff=8
+
+" Remove stupid underline under line numbers
+hi clear CursorLineNR
 
 " mick stuff
 " Quick toggle last two jump places

@@ -12,7 +12,9 @@ export UPDATE_ZSH_DAYS=30
 
 ENABLE_CORRECTION="true"
 
-plugins=(git golang)
+plugins=(git brew docker)
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,15 +41,14 @@ export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Cross compilers
-export PATH="$HOME/opt/cross/bin:$PATH"
+export PATH="$PATH:$HOME/opt/cross/bin"
+
+export EDITOR=/usr/local/bin/vim
 
 for file in ~/.{path,exports,aliases,functions,extra,fzf.zsh}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/frigon/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/frigon/google-cloud-sdk/completion.bash.inc'; fi
 
 rm -Rf "$HOME/.config/SweetScape"
 

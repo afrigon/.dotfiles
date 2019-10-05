@@ -7,14 +7,18 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 
+# vim
+alias v="vim"
+alias vi="vim"
+alias va="vim ~/.aliases"
+alias vrc="vim ~/.vimrc"
+alias vim="/usr/local/bin/vim"
+
 # Shortcuts
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias s="cd ~/src"
 alias p="cd ~/pwnbox/shared"
-
-# Git
-alias g="git"
 
 # npm
 alias ni="npm install"
@@ -114,9 +118,6 @@ alias map="xargs -n1"
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "${method}"="lwp-request -m '${method}'"
 done
-
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume output volume 100'"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
