@@ -15,6 +15,6 @@ unset file
 
 touch $HOME/.hushlogin
 
-rm -rf "$HOME/.vim"
-cp -R ./configs/.vim "$HOME/.vim"
+mkdir -p $HOME/.vim/{backups,swaps,undo,syntax}
+cp ./configs/.vim/syntax/* $HOME/.vim/syntax
 

@@ -112,9 +112,18 @@ elif is_linux; then
     done
     unset package
 
+    echo_running "Configuring apt packages..."
+    # Switch to using apt-installed zsh as default shell
+    if ! fgrep -q '/bin/zsh' /etc/shells; then
+      echo '/bin/zsh' | sudo tee -a /etc/shells
+      chsh -s /bin/zsh
+    fi
+
     python2 -m pip install --user --upgrade pip
     python3 -m pip install --user --upgrade pip
     apt remove python3-pip python-pip -y
+
+    echo_ok
 fi
 
 # oh-my-zsh
@@ -132,6 +141,13 @@ unset package
 # Create symbolic links to config files
 echo_running "Linking dotfiles..."
 source ./link.sh
+echo_ok
+
+echo_running "Installing vim plugins..."
+vim +PluginInstall +qall
+cd $HOME/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
+./install.py --clang-completer --go-completer --rust-completer --ts-completer
 echo_ok
 
 echo_ok "The initialization is complete, you might want to reboot your system for changes to apply correctly."

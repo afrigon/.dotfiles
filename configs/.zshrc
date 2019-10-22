@@ -4,7 +4,7 @@ export SHELLRC="$HOME/.zshrc"
 export ZSH="$HOME/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=30
 
-ZSH_THEME="frig"
+ZSH_THEME="custom"
 HYPHEN_INSENSITIVE="true"
 DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
