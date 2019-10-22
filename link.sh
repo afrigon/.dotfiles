@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Move to the dotfile directory
-cd $(dirname $BASH_SOURCE);
+cd $(dirname $0);
 
 # Update the dotfiles repository
 git pull -q origin master;
