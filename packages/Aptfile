@@ -3,6 +3,7 @@ cmake
 curl
 gdb
 gdb-multiarch
+golang
 htop
 jq
 neovim

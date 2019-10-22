@@ -114,6 +114,9 @@ if is_macos; then
     source ./macos.sh
 
 elif is_linux; then
+    # node 12
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
     for package in $(cat ./packages/Aptfile); do
         echo_running "Installing $package..."
         sudo apt install $package -y
@@ -141,7 +144,7 @@ fi
 
 # oh-my-zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-ln -s ./themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
+cp ./themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 
 # GEF
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
