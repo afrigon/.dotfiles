@@ -58,8 +58,8 @@ if is_macos; then
     fi
 elif is_linux; then
     echo_running "Updating apt..."
-    apt update -y 
-    apt upgrade -y
+    sudo apt update -y 
+    sudo apt upgrade -y
 fi
 echo_ok
 
@@ -67,7 +67,7 @@ echo_ok
 if ! is_installed git; then
     echo_running "Installing git..."
     is_macos && brew install git || echo_fatal
-    is_linux && apt install git -y || echo_fatal
+    is_linux && sudo apt install git -y || echo_fatal
     echo_ok
 fi
 
@@ -116,7 +116,7 @@ if is_macos; then
 elif is_linux; then
     for package in $(cat ./packages/Aptfile); do
         echo_running "Installing $package..."
-        apt install $package -y
+        sudo apt install $package -y
         echo_ok
     done
     unset package
@@ -125,12 +125,12 @@ elif is_linux; then
     # Switch to using apt-installed zsh as default shell
     if ! fgrep -q '/bin/zsh' /etc/shells; then
       echo '/bin/zsh' | sudo tee -a /etc/shells
-      chsh -s /bin/zsh
+      sudo chsh -s /bin/zsh
     fi
 
-    python2 -m pip install --user --upgrade pip
-    python3 -m pip install --user --upgrade pip
-    apt remove python3-pip python-pip -y
+    sudo python2 -m pip install --user --upgrade pip
+    sudo python3 -m pip install --user --upgrade pip
+    sudo apt remove python3-pip python-pip -y
 
     echo_ok
 fi
