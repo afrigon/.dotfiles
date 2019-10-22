@@ -6,7 +6,7 @@ This is a collection of my personnal dotfiles and configuration scripts. These s
 
 ### New machine
 
-On a brand new system simply run this command to install everything including **brew packages**, **cask applications**, **npm modules** and **vscode extensions**. It will also create links to these dotfiles in your home directory and change a bunch of macos defaults if it detects a macos machine.
+On a brand new system simply run this command to install everything including **brew or apt packages**, **cask applications**, **npm modules** and **vscode extensions**. It will also create links to these dotfiles in your home directory and change a bunch of macos defaults if it detects a macos machine.
 
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/afrigon/dotfiles/master/remote-install.sh`"
@@ -33,12 +33,6 @@ source ~/.dotfiles/macos.sh
 ### Notes
 
 The init script will install the content of packages and call the other scripts (link, macos). The file `configs/.extra` is automaticly included and won't be commited so credentials and signing keys can go there.
-
-## TODO
-
-- Add apt support for the init script.
-- Create script for updates only.
-- Fix hammerspoon
 
 ## Credits
 

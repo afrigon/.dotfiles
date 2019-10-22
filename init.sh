@@ -121,6 +121,8 @@ fi
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ln -s ./configs/themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 
+wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
+
 # Install node packages
 for package in $(cat ./packages/Npmfile); do
     sudo npm install -g "$package"

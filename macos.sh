@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 osascript -e 'tell application "System Preferences" to quit'
 
 # Execute this entire file as sudo

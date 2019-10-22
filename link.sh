@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Move to the dotfile directory
 cd $(dirname $BASH_SOURCE);
 
