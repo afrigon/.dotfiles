@@ -29,6 +29,10 @@ export LESS_TERMCAP_md='${yellow}';
 # Require variable for the gpg signing tool
 export GPG_TTY=$(tty);
 
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 ### PATH ###
 
 # Make sure custom path elements apears last to avoid malicious override of basic tools like ls

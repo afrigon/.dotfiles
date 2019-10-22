@@ -121,6 +121,10 @@ elif is_linux; then
     done
     unset package
 
+    # fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+
     echo_running "Configuring apt packages..."
     # Switch to using apt-installed zsh as default shell
     if ! fgrep -q '/bin/zsh' /etc/shells; then
@@ -137,7 +141,7 @@ fi
 
 # oh-my-zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-ln -s ./configs/themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
+ln -s ./themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 
 # GEF
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh

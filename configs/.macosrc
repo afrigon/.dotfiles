@@ -2,6 +2,8 @@ rm -Rf "$HOME/.config/SweetScape"
 
 # aliases
 
+alias vim="/usr/local/bin/vim"
+
 # apps
 alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
@@ -31,4 +33,12 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+
+# FZF
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  export PATH=$PATH:/usr/local/opt/fzf/bin
+fi
+[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 

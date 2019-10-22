@@ -26,7 +26,6 @@ alias ve="vim ~/.exports"
 alias vf="vim ~/.functions"
 alias vrc="vim ~/.vimrc"
 alias vssh="vim ~/.ssh/config"
-alias vim="/usr/local/bin/vim"
 alias vt='vim $RANDOM'
 
 # Shortcuts
