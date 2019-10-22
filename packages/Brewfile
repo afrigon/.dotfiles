@@ -18,6 +18,7 @@ brew "vim", args: ["with-override-system-vi"]
 brew "ssh-copy-id"
 
 brew "ascii"
+brew "bat"
 brew "cmake"
 brew "curl"
 brew "dockutil"

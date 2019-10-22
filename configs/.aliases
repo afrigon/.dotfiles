@@ -1,33 +1,41 @@
-#!/usr/bin/env zsh
+# Check for various OS openers. Quit as soon as we find one that works.
+for opener in open browser-exec xdg-open cmd.exe cygstart "start"; do
+	if is_installed $opener; then
+		if [[ "$opener" == "cmd.exe" ]]; then
+			alias open="$opener /c start";
+		else
+			alias open="$opener";
+		fi
+		break;
+	fi
+done
+unset file
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 
-# vim
+# Editor
+alias e="$EDITOR"
 alias v="vim"
 alias vi="vim"
 alias va="vim ~/.aliases"
+alias ve="vim ~/.exports"
+alias vf="vim ~/.functions"
 alias vrc="vim ~/.vimrc"
+alias vssh="vim ~/.ssh/config"
 alias vim="/usr/local/bin/vim"
+alias vt='vim $RANDOM'
 
 # Shortcuts
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
 alias s="cd ~/src"
-alias p="cd ~/pwnbox/shared"
-
-# npm
-alias ni="npm install"
-alias nu="npm uninstall"
-alias nup="npm update"
-alias nri="rm -r node_modules && npm install"
 
 # Misc
-alias reload="source ~/.bash_profile"
+alias reload="[[ -n $SHELLRC ]] && source $SHELLRC || echo Invalid SHELLRC, could not reload"
 alias quit="exit"
 
 # Detect which `ls` flavor is in use
@@ -41,13 +49,10 @@ fi
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
-
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
-
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
 
@@ -57,25 +62,20 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# functional
+alias map="xargs -n1"
+alias filter="grep"
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
 # Get week number
 alias week='date +%V'
 
-# Google Chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-
 # IP addresses
 alias ipe="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ipl="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-# Netstat -l
-alias ns="sudo lsof -iTCP -sTCP:LISTEN -n -P"
-
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+command -v ipconfig > /dev/null && alias ipl="ipconfig getifaddr en0"
+command -v ip > /dev/null && alias ipl='ip -4 a show eth0 | grep -oP "(?<=inet ).*(?=/)"'
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
@@ -86,55 +86,22 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empty the Trash on all mounted volumes and the main HDD.
-# Also, clear Apple’s System Logs to improve shell startup speed.
-# Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
-# Merge PDF files
-# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
-alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
-
-# Intuitive map function
-# For example, to list all directories that contain a certain file:
-# find . -name .gitattributes | map dirname
-alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "${method}"="lwp-request -m '${method}'"
 done
 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths="echo -e ${PATH//:/\\n}"
 
-# Mac Docker client app shortcut
-alias docker-server="open -a Docker"
-alias ida="open -a ida.app"
-alias ida64="open -a ida64.app"
-alias binja="open -a Binary\ Ninja.app"
-
 # fzf viewer
 alias ef='fzf --preview '\''bat --color "always" {}'\'' --bind='\''enter:execute(vim {})+abort'\'
 
 # github token
-alias gt="cat ~/.github.token | pbcopy; pbpaste"
+alias github="cat ~/.github.token | pbcopy; echo 'Github token copied to clipboard.'"
+

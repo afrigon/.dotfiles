@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 osascript -e 'tell application "System Preferences" to quit'
 
 # Execute this entire file as sudo
@@ -7,11 +5,15 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Sets the computer name
-COMPUTER_NAME="Frigbook"
-sudo scutil --set ComputerName "$COMPUTER_NAME"
-sudo scutil --set HostName "$COMPUTER_NAME"
-sudo scutil --set LocalHostName "$COMPUTER_NAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+echo "How do you want to name this computer? (leave blank to keep the actual name)"
+read COMPUTER_NAME
+if [[ -n $COMPUTER_NAME ]]; then
+    sudo scutil --set ComputerName "$COMPUTER_NAME"
+    sudo scutil --set HostName "$COMPUTER_NAME"
+    sudo scutil --set LocalHostName "$COMPUTER_NAME"
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+fi
+unset COMPUTER_NAME
 
 # Set dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle "Dark"
@@ -34,13 +36,11 @@ sudo systemsetup -settimezone "America/Montreal" > /dev/null
 # Set docked apps
 dockutil --no-restart --remove all
 dockutil --no-restart --add /Applications/Launchpad.app
-dockutil --no-restart --add /Applications/Messages.app
-dockutil --no-restart --add /Applications/Utilities/Terminal.app
+dockutil --no-restart --add /Applications/iTerm.app
+dockutil --no-restart --add /Applications/Dashlane.app
 dockutil --no-restart --add /Applications/Google\ Chrome.app
-dockutil --no-restart --add /Applications/iTunes.app
+dockutil --no-restart --add /Applications/Spotify.app
 dockutil --no-restart --add /Applications/Slack.app
-dockutil --no-restart --add /Applications/Visual\ Studio\ Code\ -\ Insiders.app
-dockutil --no-restart --add /Applications/Xcode.app
 dockutil --no-restart --add /Applications/Calendar.app
 dockutil --no-restart --add /Applications/System\ Preferences.app
 dockutil --no-restart --add "$HOME/Downloads" --view fan --display stack --sort dateadded
@@ -209,43 +209,6 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 # See: https://security.stackexchange.com/a/47786/8918
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
-osascript <<EOD
-
-tell application "Terminal"
-	local allOpenedWindows
-	local initialOpenedWindows
-	local windowID
-	set themeName to "solarized-dark"
-
-	(* Store the IDs of all the open terminal windows. *)
-	set initialOpenedWindows to id of every window
-
-	(* Open the custom theme so that it gets added to the list of available terminal themes (note: this will open two additional terminal windows). *)
-	do shell script "open '$(pwd -P)/packages/manual/" & themeName & ".terminal'"
-
-	(* Wait a little bit to ensure that the custom theme is added. *)
-	delay 1
-
-	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeName
-
-	(* Get the IDs of all the currently opened terminal windows. *)
-	set allOpenedWindows to id of every window
-
-	repeat with windowID in allOpenedWindows
-		(* Close the additional windows that were opened in order to add the custom theme to the list of terminal themes. *)
-		if initialOpenedWindows does not contain windowID then
-			close (every window whose id is windowID)
-		(* Change the theme for the initial opened terminal windows to remove the need to close them in order for the custom theme to be applied. *)
-		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-		end if
-	end repeat
-end tell
-EOD
-
-
 # Appearance
 defaults write com.apple.terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
@@ -294,7 +257,7 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Safari
 
-# Set Safari’s home page to `about:blank` for faster loading
+# Set Safari’s home page
 defaults write com.apple.Safari HomePage -string "google.ca"
 
 # Make Safari’s search banners default to Contains instead of Starts With

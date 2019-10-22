@@ -1,17 +1,43 @@
+" Vundle
+if empty(glob('~/.vim/bundle/Vundle.vim'))
+    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
+
+" Make Vim drop vi compatibility
+set nocompatible
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'terryma/vim-multiple-cursors'
+    Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plugin 'dracula/vim', { 'name': 'dracula' }
+    Plugin 'Valloric/YouCompleteMe'
+    let g:ycm_autoclose_preview_window_after_completion=1
+    
+    " Bracket colorizer
+    Plugin 'luochen1990/rainbow'
+    let g:rainbow_active = 1
+    let g:rainbow_conf = { 'ctermfgs': ['Magenta', 'Yellow', 'Cyan'] }
+
+call vundle#end()
+filetype plugin indent on
+
+" Colors
+" set t_co=256 " introduce a weird mapping on 256
 set background=dark
+let g:dracula_italic = 0
+let g:dracula_colorterm = 0
+highlight Normal ctermbg=None
+colorscheme dracula
+syntax on
 
-" Remove arrow key and add the jk shortcut for escape
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-nnoremap <Down> <nop>
-nnoremap <Up> <nop>
-inoremap jk <esc>
+"colorscheme slate
 
-" Window jumps
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+set backspace=indent,eol,start
 
 " Natural split direction
 set splitbelow
@@ -30,13 +56,8 @@ endif
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
-set backspace=2
-
 " Optimize for fast terminal connections
 set ttyfast
-
-" Make Vim drop vi compatibility
-set nocompatible
 
 " Enhance command-line completion$
 set path+=**
@@ -61,9 +82,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-
-syntax on
-colorscheme slate
 
 " Respect modeline in files
 set modeline
@@ -97,14 +115,6 @@ set scrolloff=8
 " Remove stupid underline under line numbers
 hi clear CursorLineNR
 
-" mick stuff
-" Quick toggle last two jump places
-"nnoremap <leader><leader> :normal! ''<CR>
-
-" Add numbered movements to jump list
-"nnoremap <expr> k (v:count > 2 ? "m'" . v:count : '') . 'k'
-"nnoremap <expr> j (v:count > 2 ? "m'" . v:count : '') . 'j'
-
 " Automatic commands
 if has("autocmd")
     " Enable file type detection
@@ -115,19 +125,53 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
-call plug#begin('~/.vim/plugged')
+""" LEADER 
 
-" go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let mapleader = " "
+nnoremap <space> <NOP>
 
-" multi-cursor
-Plug 'terryma/vim-multiple-cursors'
+" Select all
+nnoremap <leader>a ggVG
 
-call plug#end()
+" YouCompleteMe Definition
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+
+""" CONTROL
+
+" Removes the exit help message
+nnoremap <C-c> <silent> <C-c>
+
+" Window jumps
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Prevent background
+noremap <C-z> <NOP>
+
+
+""" NORMAL
+
+" Remove arrow key and add the jk shortcut for escape
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+nnoremap <Down> <nop>
+nnoremap <Up> <nop>
+
+
+""" INSERT
+inoremap jk <esc>
+
+
+""" VISUAL MODE
+
+" Move block of text
+vnoremap <C-j> :m '>+1<cr>gv=gv
+vnoremap <C-k> :m '<-2<cr>gv=gv
+
+" Indent in visual mode
+vnoremap < <gv
+vnoremap > >gv

@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Identify OS and Machine
 export OS=`uname -s | sed -e 's/ *//g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
 export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
@@ -7,24 +5,17 @@ export MACHINE=`uname -m | sed -e 's/ *//g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefgh
 export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
 # Make vim the default editor.
-export EDITOR='vim';
+export EDITOR='/usr/local/bin/vim';
 
 # Don’t clear the screen after quitting a manual page
-export MANPAGER="less -X"
-
-# Enable persistent REPL history for `node`.
-export NODE_REPL_HISTORY=~/.node_history;
-# Allow 32³ entries; the default is 1000.
-export NODE_REPL_HISTORY_SIZE='32768';
-# Use sloppy mode by default, matching web browsers.
-export NODE_REPL_MODE='sloppy';
+export MANPAGER='less -X'
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
 # Increase Bash history size. Allow 32³ entries; the default is 500.
 export HISTSIZE='32768';
-export HISTFILESIZE="${HISTSIZE}";
+export HISTFILESIZE='${HISTSIZE}';
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
 
@@ -33,9 +24,33 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 # Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_md='${yellow}';
 
-# Avoid issues with `gpg` as installed via Homebrew.
-# https://stackoverflow.com/a/42265848/96656
+# Require variable for the gpg signing tool
 export GPG_TTY=$(tty);
+
+### PATH ###
+
+# Make sure custom path elements apears last to avoid malicious override of basic tools like ls
+export PATH=$PATH:/usr/local/sbin
+
+# ~/bin
+export PATH=$PATH:$HOME/bin
+#
+# Cross compilers
+export PATH=$PATH:$HOME/opt/cross/bin
+
+# fastlane
+export PATH=$PATH:$HOME/.fastlane/bin
+
+# Go
+if is_installed go; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+# Rust
+if is_installed rustc; then
+    export PATH=$PATH:$HOME/.cargo/bin
+    export RUST_SRC_PATH='$(rustc --print sysroot)/lib/rustlib/src/rust/src'
+fi
 

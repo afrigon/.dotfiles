@@ -1,0 +1,9 @@
+# TODO: ADD FZF.ZSH
+for file in $HOME/.{functions,exports,aliases,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done
+unset file
+
+is_macos && source ~/.macosrc
+is_linux && source ~/.linuxrc
+

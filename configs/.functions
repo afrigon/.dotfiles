@@ -1,16 +1,16 @@
+# Return EXIT_SUCCESS if a command is available
+function is_installed() {
+    command -v "$1" &> /dev/null && return 0 || return 1
+}
 
-# Determine size of a file or total size of a directory
-function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* ./*;
-	fi;
+# Return EXIT_SUCCESS if is on MacOS
+function is_macos() {
+    [[ $(uname) =~ [Dd]arwin ]] && return 0 || return 1
+}
+
+# Return EXIT_SUCCESS if is on Linux
+function is_linux() {
+    [[ $(uname) =~ [Ll]inux ]] && return 0 || return 1
 }
 
 # Create a data URL from a file
@@ -35,18 +35,8 @@ function rex () {
     wine $HOME/tools/Rex.exe "$@" 2> /dev/null
 }
 
-# Create a data URL from a file
-dataurl() {
-	local mimeType
-	mimeType=$(file -b --mime-type "$1")
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8"
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
-}
-
 function hex() {
-    echo "obase=16; $1" | bc | xargs -0 printf "0x\%s"
+    echo "obase=16; 123" | bc | xargs printf "0x%s\n"
 }
 
 function dec() {
