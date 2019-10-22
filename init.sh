@@ -10,9 +10,18 @@ COL_RESET=$ESC_SEQ"39;49;00m"
 COL_RED=$ESC_SEQ"31;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
 COL_YELLOW=$ESC_SEQ"33;01m"
-function echo_ok() { echo -e "$COL_GREEN[ok]$COL_RESET "$1 }
-function echo_running() { echo -en "$COL_YELLOW ⇒ $COL_RESET"$1": " }
-function echo_fatal() { echo -e "$COL_RED[error]$COL_RESET $1"; exit 1 }
+
+function echo_ok() {
+    echo -e "$COL_GREEN[ok]$COL_RESET "$1
+}
+
+function echo_running() {
+    echo -en "$COL_YELLOW ⇒ $COL_RESET"$1": "
+}
+
+function echo_fatal() {
+    echo -e "$COL_RED[error]$COL_RESET $1"; exit 1
+}
 
 # Update the dotfiles repository
 is_installed git && git pull -q origin master
@@ -130,6 +139,7 @@ fi
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ln -s ./configs/themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 
+# GEF
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 # Install node packages
