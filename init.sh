@@ -87,6 +87,10 @@ if is_macos; then
     # fzf
     $(brew --prefix)/opt/fzf/install --bin
 
+    # Yabai
+    brew services start skhd
+    brew services start yabai
+
     echo_ok
 
     # Install casks

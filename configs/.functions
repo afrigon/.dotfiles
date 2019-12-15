@@ -36,7 +36,7 @@ function rex () {
 }
 
 function hex() {
-    echo "obase=16; 123" | bc | xargs printf "0x%s\n"
+    echo "obase=16; $1" | bc | xargs printf "0x%s\n"
 }
 
 function dec() {

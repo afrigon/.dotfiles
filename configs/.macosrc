@@ -39,6 +39,13 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
   export PATH=$PATH:/usr/local/opt/fzf/bin
 fi
-[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+#iTerm
+function iterm() {
+    osascript &>/dev/null <<EOF
+        tell application "iTerm2"
+          create window with default profile
+        end tell
+EOF
+}
 

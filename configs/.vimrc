@@ -155,7 +155,7 @@ noremap <C-z> <NOP>
 
 """ NORMAL
 
-" Remove arrow key and add the jk shortcut for escape
+" Remove arrow key
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
 nnoremap <Down> <nop>

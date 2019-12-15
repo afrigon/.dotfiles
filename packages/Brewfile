@@ -1,5 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
+tap "caffix/amass"
+tap koekeishiya/formulae
 
 brew "zsh"
 
@@ -17,6 +19,7 @@ brew "screen"
 brew "vim", args: ["with-override-system-vi"]
 brew "ssh-copy-id"
 
+brew "amass"
 brew "ascii"
 brew "bat"
 brew "cmake"
@@ -25,6 +28,7 @@ brew "dockutil"
 brew "ffmpeg"
 brew "git-lfs"
 brew "gnupg"
+brew "koekeishiya/formulae/skhd"
 brew "make"
 brew "nasm"
 brew "openssl"
@@ -33,4 +37,5 @@ brew "tldr"
 brew "tmux"
 brew "tree"
 brew "unar"
+brew "yabai"
 

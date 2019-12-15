@@ -8,7 +8,7 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 export EDITOR='/usr/local/bin/vim';
 
 # Don’t clear the screen after quitting a manual page
-export MANPAGER='less -X'
+export MANPAGER='less -s -M +Gg'
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
@@ -28,6 +28,16 @@ export LESS_TERMCAP_md='${yellow}';
 
 # Require variable for the gpg signing tool
 export GPG_TTY=$(tty);
+
+# less
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\e[1;33m'     # begin blink
+export LESS_TERMCAP_so=$'\e[01;44;37m' # begin reverse video
+export LESS_TERMCAP_us=$'\e[01;37m'    # begin underline
+export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
+export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
+export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'

@@ -34,7 +34,7 @@ alias d="cd ~/Desktop"
 alias s="cd ~/src"
 
 # Misc
-alias reload="[[ -n $SHELLRC ]] && source $SHELLRC || echo Invalid SHELLRC, could not reload"
+alias reload="[[ -f $SHELLRC ]] && source $SHELLRC || echo Invalid SHELLRC, could not reload"
 alias quit="exit"
 
 # Detect which `ls` flavor is in use
@@ -67,6 +67,7 @@ alias filter="grep"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+alias please='sudo'
 
 # Get week number
 alias week='date +%V'
