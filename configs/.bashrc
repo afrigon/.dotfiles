@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 source $HOME/.initrc
 
 # FZF

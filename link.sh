@@ -15,6 +15,9 @@ unset file
 
 touch $HOME/.hushlogin
 
+mkdir -p $HOME/.emacs/{backups}
 mkdir -p $HOME/.vim/{backups,swaps,undo,syntax}
 cp ./configs/.vim/syntax/* $HOME/.vim/syntax
+
+[ ! -e $HOME/.emacs.d ] && git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
 

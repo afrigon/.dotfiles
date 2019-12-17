@@ -5,6 +5,7 @@ tap koekeishiya/formulae
 
 brew "zsh"
 
+brew "ag"
 brew "coreutils"
 brew "moreutils"
 brew "findutils"

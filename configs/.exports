@@ -1,3 +1,8 @@
+# Return EXIT_SUCCESS if a command is available
+function is_installed() {
+    command -v "$1" &> /dev/null && return 0 || return 1
+}
+
 # Identify OS and Machine
 export OS=`uname -s | sed -e 's/ *//g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
 export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
@@ -40,8 +45,11 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 # FZF
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export PATH=$PATH:/usr/local/opt/fzf/bin
+fi
 
 ### PATH ###
 

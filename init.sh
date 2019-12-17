@@ -90,6 +90,7 @@ if is_macos; then
     # Yabai
     brew services start skhd
     brew services start yabai
+    sudo yabai --install-sa
 
     echo_ok
 

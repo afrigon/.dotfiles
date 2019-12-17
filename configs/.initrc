@@ -1,4 +1,4 @@
-for file in $HOME/.{functions,exports,aliases,extra}; do
+for file in $HOME/.{functions,aliases,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 unset file

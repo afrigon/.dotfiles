@@ -34,12 +34,6 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 
-
-# FZF
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-  export PATH=$PATH:/usr/local/opt/fzf/bin
-fi
-
 #iTerm
 function iterm() {
     osascript &>/dev/null <<EOF
