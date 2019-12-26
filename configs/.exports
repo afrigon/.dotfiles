@@ -65,6 +65,11 @@ export PATH=$PATH:$HOME/opt/cross/bin
 # fastlane
 export PATH=$PATH:$HOME/.fastlane/bin
 
+# python 3.7
+if [ -e "$HOME/Library/Python/3.7/bin" ]; then
+    export PATH=$PATH:$HOME/Library/Python/3.7/bin
+fi
+
 # Go
 if is_installed go; then
     export PATH=$PATH:$(go env GOPATH)/bin

@@ -43,3 +43,10 @@ function dec() {
     echo $1 | tr a-f A-F | sed 's/0x//' | xargs -0 printf "obase=10;ibase=16; %s" | bc
 }
 
+function spotify2apple() {
+    open $(curl -s "https://sharify.frigon.app/translate?url=$1&target=apple-music" | jq '.externals["apple-music"].url' | sed 's/\"//g')
+}
+
+function apple2spotify() {
+    open $(curl -s "https://sharify.frigon.app/translate?url=$1&target=spotify" | jq '.externals["spotify"].url' | sed 's/\"//g')
+}
