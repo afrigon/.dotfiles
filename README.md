@@ -10,7 +10,7 @@ On a brand new system simply run this command to install everything including **
 
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/afrigon/dotfiles/master/remote-install.sh`"
-source ~/.dotfiles/init.sh
+bash -c "~/.dotfiles/init.sh"
 ```
 
 ### Dotfiles only
@@ -41,4 +41,5 @@ Most of these configuration are stolen or adapted from these people.
 - Ian Bouchard [PwnBox](https://github.com/Corb3nik/PwnBox)
 - Lars Kappert [awesome-dotfiles](https://github.com/webpro/dotfiles)
 - Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
+- Jess Frazelle [dotfiles](https://github.com/jessfraz/dotfiles)
 
