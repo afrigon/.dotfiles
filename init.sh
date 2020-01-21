@@ -82,6 +82,23 @@ if is_macos; then
       chsh -s /bin/zsh
     fi
 
+    # GPG use keychain
+    echo "pinentry-program /usr/local/bin/pinentry-mac" > ~/.gnupg/gpg-agent.conf
+    killall gpg-agent
+    gpg-agent --daemon
+
+    echo "-------------------------------------------------------"
+    echo "please take the time to generate a gpg key for git"
+    echo "gpg --full-generate-key  # generate a gpg key"
+    echo "git config --global user.signingkey YOUR_GPG_KEY  # make sure git is using the right key"
+    echo "gpg --armor --export YOUR_GPG_KEY | pbcopy  # and add the key to your github account"
+    echo "-------------------------------------------------------"
+    echo "(press enter to continue)"
+
+    read
+
+    echo "test" | gpg --clearsign
+
     # fzf
     $(brew --prefix)/opt/fzf/install --bin
 
