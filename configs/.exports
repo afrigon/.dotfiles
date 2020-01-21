@@ -53,6 +53,10 @@ fi
 
 ### PATH ###
 
+# gnu tools
+export PATH=/usr/local/opt/make/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
+
 # Make sure custom path elements apears last to avoid malicious override of basic tools like ls
 export PATH=$PATH:/usr/local/sbin
 

@@ -1,7 +1,7 @@
 [user]
 	name = Alexandre Frigon
 	email = alexandre.frigon.1@gmail.com
-	signingKey = BD8620257DA3EB13
+    signingKey = ED1099362DE25F79
 
 [github]
 	user = afrigon

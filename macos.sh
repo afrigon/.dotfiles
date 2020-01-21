@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# set -x
 
 osascript -e 'tell application "System Preferences" to quit'
 
@@ -20,6 +21,9 @@ unset COMPUTER_NAME
 # Set dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle "Dark"
 
+# Hide menu bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Show file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
@@ -37,21 +41,21 @@ sudo systemsetup -settimezone "America/Montreal" > /dev/null
 
 # Set docked apps
 dockutil --no-restart --remove all
-dockutil --no-restart --add /Applications/Launchpad.app
+dockutil --no-restart --add /System/Applications/Launchpad.app
 dockutil --no-restart --add /Applications/iTerm.app
 dockutil --no-restart --add /Applications/Dashlane.app
 dockutil --no-restart --add /Applications/Google\ Chrome.app
 dockutil --no-restart --add /Applications/Spotify.app
 dockutil --no-restart --add /Applications/Slack.app
-dockutil --no-restart --add /Applications/Calendar.app
-dockutil --no-restart --add /Applications/System\ Preferences.app
+dockutil --no-restart --add /System/Applications/Calendar.app
+dockutil --no-restart --add /System/Applications/System\ Preferences.app
 dockutil --no-restart --add "$HOME/Downloads" --view fan --display stack --sort dateadded
 
 # Set the icon size of Dock items to 62 pixels
 defaults write com.apple.dock tilesize -int 62
 
-# Auto hides the dock
-defaults write com.apple.dock autohide --int 1
+# Delete recent items from dock
+defaults write com.apple.dock recent-apps -bool false
 
 # Disable audio feedback when volume is changed
 defaults write com.apple.sound.beep.feedback -bool false
@@ -84,7 +88,6 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Disable Sudden Motion Sensor
 sudo pmset -a sms 0
-
 
 # Keyboard and inputs
 
@@ -219,6 +222,9 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
 
 # Activity Monitor
 
@@ -255,6 +261,9 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
+
+# Automatically download apps purchased on other Macs
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 
 # Safari
@@ -352,7 +361,6 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 # Expand the print dialog by default
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
-
 
 # Restart affected applications
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal" "Google Chrome" "Messages" "Photos"; do

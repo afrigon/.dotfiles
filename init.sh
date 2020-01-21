@@ -16,7 +16,7 @@ function echo_ok() {
 }
 
 function echo_running() {
-    echo -en "$COL_YELLOW ⇒ $COL_RESET"$1": "
+    echo -e "$COL_YELLOW ⇒ $COL_RESET"$1": "
 }
 
 function echo_fatal() {
@@ -99,6 +99,13 @@ if is_macos; then
     brew bundle --file=./packages/Caskfile
     echo_ok
 
+    # Install mas apps
+    echo_running "Installing mas apps..."
+    brew bundle --file=./packages/Masfile
+    echo_ok
+
+    sudo xcodebuild -license accept
+
     # rename vscode insider binary to code
     mv /usr/local/bin/code-insiders /usr/local/bin/code
 
@@ -155,10 +162,7 @@ cp ./themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 # Install node packages
-for package in $(cat ./packages/Npmfile); do
-    sudo npm install -g "$package"
-done
-unset package
+cat ./packages/Npmfile | xargs -n1 sudo npm install -g
 
 # Create symbolic links to config files
 echo_running "Linking dotfiles..."

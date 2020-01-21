@@ -1,7 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "caffix/amass"
-tap koekeishiya/formulae
+tap "koekeishiya/formulae"
 
 brew "zsh"
 
@@ -10,14 +10,17 @@ brew "coreutils"
 brew "moreutils"
 brew "findutils"
 brew "fzf"
-brew "gnu-sed", args: ["with-default-names"]
-brew "wget", args: ["with-iri"]
+brew "wget"
 brew "gnupg"
+brew "gnu-sed"
 brew "grep"
+brew "htop"
+brew "jq"
+brew "node"
 brew "openssh"
 brew "reattach-to-user-namespace"
 brew "screen"
-brew "vim", args: ["with-override-system-vi"]
+brew "vim"
 brew "ssh-copy-id"
 
 brew "amass"
@@ -30,6 +33,7 @@ brew "ffmpeg"
 brew "git-lfs"
 brew "gnupg"
 brew "koekeishiya/formulae/skhd"
+brew "mas"
 brew "make"
 brew "nasm"
 brew "openssl"
