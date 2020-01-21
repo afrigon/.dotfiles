@@ -69,6 +69,11 @@ export PATH=$PATH:$HOME/opt/cross/bin
 # fastlane
 export PATH=$PATH:$HOME/.fastlane/bin
 
+# Git 2.25
+if [ -e "/usr/local/Cellar/git/2.25.0/bin" ]; then
+    export PATH=/usr/local/Cellar/git/2.25.0/bin:$PATH
+fi
+
 # python 3.7
 if [ -e "$HOME/Library/Python/3.7/bin" ]; then
     export PATH=$PATH:$HOME/Library/Python/3.7/bin

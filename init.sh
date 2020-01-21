@@ -64,12 +64,10 @@ fi
 echo_ok
 
 # Install git
-if ! is_installed git; then
-    echo_running "Installing git..."
-    is_macos && brew install git || echo_fatal
-    is_linux && sudo apt install git -y || echo_fatal
-    echo_ok
-fi
+echo_running "Installing git..."
+is_macos && brew install git || echo_fatal
+is_linux && sudo apt install git -y || echo_fatal
+echo_ok
 
 # Install packages
 echo_running "Installing packages..."
