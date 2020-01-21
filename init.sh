@@ -69,6 +69,11 @@ is_macos && brew install git || echo_fatal
 is_linux && sudo apt install git -y || echo_fatal
 echo_ok
 
+# Create symbolic links to config files
+echo_running "Linking dotfiles..."
+source ./link.sh
+echo_ok
+
 # Install packages
 echo_running "Installing packages..."
 if is_macos; then
@@ -178,11 +183,6 @@ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 # Install node packages
 cat ./packages/Npmfile | xargs -n1 sudo npm install -g
-
-# Create symbolic links to config files
-echo_running "Linking dotfiles..."
-source ./link.sh
-echo_ok
 
 echo_running "Installing vim plugins..."
 vim +PluginInstall +qall
