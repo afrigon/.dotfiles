@@ -24,6 +24,9 @@ defaults write NSGlobalDomain AppleInterfaceStyle "Dark"
 # Hide menu bar
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
+# Remove annoying accents menu
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Show file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
