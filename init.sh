@@ -59,14 +59,14 @@ if is_macos; then
 elif is_linux; then
     echo_running "Updating apt..."
     sudo apt update -y 
-    sudo apt upgrade -y
+    # sudo apt upgrade -y
 fi
 echo_ok
 
 # Install git
 echo_running "Installing git..."
-is_macos && brew install git || echo_fatal
-is_linux && sudo apt install git -y || echo_fatal
+is_macos && brew install git
+is_linux && sudo apt install git -y
 echo_ok
 
 # Create symbolic links to config files
