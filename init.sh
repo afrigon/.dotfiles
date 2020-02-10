@@ -178,6 +178,9 @@ fi
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ./themes/custom.zsh-theme ~/.oh-my-zsh/custom/themes
 
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # GEF
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 

@@ -69,6 +69,9 @@ export PATH=$PATH:$HOME/opt/cross/bin
 # fastlane
 export PATH=$PATH:$HOME/.fastlane/bin
 
+# Dart
+export PATH=$PATH:$HOME/.pub-cache/bin
+
 # Git 2.25
 if [ -e "/usr/local/Cellar/git/2.25.0/bin" ]; then
     export PATH=/usr/local/Cellar/git/2.25.0/bin:$PATH

@@ -7,7 +7,7 @@ alias vim="/usr/local/bin/vim"
 # apps
 alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
-alias ida64="open -a ida64.app"
+alias ida64="/Applications/IDA\ Pro\ 7.0/IDA64.app/Contents/MacOS/ida64"
 alias binja="open -a Binary\ Ninja.app"
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 

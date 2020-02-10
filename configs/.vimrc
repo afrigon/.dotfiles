@@ -10,10 +10,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'terryma/vim-multiple-cursors'
     Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plugin 'rust-lang/rust.vim'
     Plugin 'dracula/vim', { 'name': 'dracula' }
     Plugin 'Valloric/YouCompleteMe'
     let g:ycm_autoclose_preview_window_after_completion=1
@@ -22,7 +22,6 @@ call vundle#begin()
     Plugin 'luochen1990/rainbow'
     let g:rainbow_active = 1
     let g:rainbow_conf = { 'ctermfgs': ['Magenta', 'Yellow', 'Cyan'] }
-
 call vundle#end()
 filetype plugin indent on
 
