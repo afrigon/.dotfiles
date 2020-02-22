@@ -31,7 +31,7 @@ alias vt='vim $RANDOM'
 # Shortcuts
 alias dw="cd ~/Downloads"
 alias d="cd ~/Desktop"
-alias s="cd ~/src"
+alias s="cd ~/src/github.com/afrigon"
 
 # Misc
 alias reload="[[ -f $SHELLRC ]] && source $SHELLRC || echo Invalid SHELLRC, could not reload"

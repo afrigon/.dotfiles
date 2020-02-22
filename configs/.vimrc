@@ -12,13 +12,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plugin 'rust-lang/rust.vim'
     Plugin 'dracula/vim', { 'name': 'dracula' }
+    Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+    Plugin 'rust-lang/rust.vim'
+    let g:rustfmt_autosave = 1
+
     Plugin 'Valloric/YouCompleteMe'
     let g:ycm_autoclose_preview_window_after_completion=1
     
-    " Bracket colorizer
     Plugin 'luochen1990/rainbow'
     let g:rainbow_active = 1
     let g:rainbow_conf = { 'ctermfgs': ['Magenta', 'Yellow', 'Cyan'] }
@@ -174,3 +176,6 @@ vnoremap <C-k> :m '<-2<cr>gv=gv
 " Indent in visual mode
 vnoremap < <gv
 vnoremap > >gv
+
+""" Rust
+autocmd FileType rust map <leader>r :w<CR>:!cargo run<CR>
