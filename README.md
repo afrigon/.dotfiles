@@ -10,7 +10,8 @@ On a brand new system simply run this command to install everything including **
 
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/afrigon/dotfiles/master/remote-install.sh`"
-bash -c "~/.dotfiles/init.sh"
+cd ~/.dotfiles
+source "./init.sh"
 ```
 
 ### Dotfiles only
@@ -19,7 +20,8 @@ To skip the installation of the packages directory, simply clone this repository
 
 ```sh
 git clone https://github.com/afrigon/dotfiles.git ~/.dotfiles
-source ~/.dotfiles/link.sh
+cd ~/.dotfiles
+source ./link.sh
 ```
 
 ### MacOS Defaults
@@ -39,6 +41,7 @@ The init script will install the content of packages and call the other scripts 
 Most of these configuration are stolen or adapted from these people.
 
 - Ian Bouchard [PwnBox](https://github.com/Corb3nik/PwnBox)
+- Michaël Lévesque-Dion [dotfiles](https://github.com/mlevesquedion/dotfiles)
 - Lars Kappert [awesome-dotfiles](https://github.com/webpro/dotfiles)
 - Mathias Bynens [dotfiles](https://github.com/mathiasbynens/dotfiles)
 - Jess Frazelle [dotfiles](https://github.com/jessfraz/dotfiles)
