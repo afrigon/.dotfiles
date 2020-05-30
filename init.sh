@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-# Move to the dotfile directory
-cd $(dirname $BASH_SOURCE)
+#!/usr/bin/env sh
 
 # Include helper functions
 source ./configs/.functions
