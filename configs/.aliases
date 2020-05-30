@@ -105,3 +105,4 @@ alias ef='fzf --preview '\''bat --color "always" {}'\'' --bind='\''enter:execute
 # github token
 alias github="cat ~/.github.token | pbcopy; echo 'Github token copied to clipboard.'"
 
+alias gitlines='git ls-files | while read f; do git blame -w --line-porcelain -- "$f" | grep -I "^author "; done | sort -f | uniq -ic | sort -n'

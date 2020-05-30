@@ -54,7 +54,7 @@ if is_macos; then
         brew upgrade
     else
         echo_running "Installing brew..."
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || echo_fatal
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebew/install/master/install.sh)" || echo_fatal
     fi
 elif is_linux; then
     echo_running "Updating apt..."

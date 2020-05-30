@@ -162,6 +162,9 @@ nnoremap <Right> <nop>
 nnoremap <Down> <nop>
 nnoremap <Up> <nop>
 
+" Google search word under cursor
+nnoremap <leader>q :exec "!open -a 'google chrome' 'https://google.com/search\?q\=" . expand("<cword>") . "'"<CR>
+
 
 """ INSERT
 inoremap jk <esc>
@@ -179,3 +182,4 @@ vnoremap > >gv
 
 """ Rust
 autocmd FileType rust map <leader>r :w<CR>:!cargo run<CR>
+autocmd FileType rust map <leader>t :w<CR>:!cargo test -- --nocapture<CR>

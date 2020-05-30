@@ -4,6 +4,8 @@ rm -Rf "$HOME/.config/SweetScape"
 
 alias vim="/usr/local/bin/vim"
 
+alias m="cd ~/Library/Application\ Support/minecraft"
+
 # apps
 alias docker-server="open -a Docker"
 alias ida="open -a ida.app"
