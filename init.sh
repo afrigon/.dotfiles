@@ -165,7 +165,7 @@ elif is_linux; then
     fi
 
     sudo python3 -m pip install --user --upgrade pip
-    sudo apt remove python3-pip python-pip -y
+    sudo apt remove python3-pip -y
 
     echo_ok
 fi
