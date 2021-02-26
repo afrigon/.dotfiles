@@ -164,7 +164,6 @@ elif is_linux; then
       sudo chsh -s /bin/zsh
     fi
 
-    sudo python2 -m pip install --user --upgrade pip
     sudo python3 -m pip install --user --upgrade pip
     sudo apt remove python3-pip python-pip -y
 
