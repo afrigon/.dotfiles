@@ -30,9 +30,6 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Show file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Use fahrenheit
-defaults write NSGlobalDomain AppleTemperatureUnit "Fahrenheit"
-
 # Language
 defaults write NSGlobalDomain AppleLanguages -array "en"
 defaults write NSGlobalDomain AppleLocale -string "en_CA@currency=CAD"
@@ -46,7 +43,6 @@ sudo systemsetup -settimezone "America/Montreal" > /dev/null
 dockutil --no-restart --remove all
 dockutil --no-restart --add /System/Applications/Launchpad.app
 dockutil --no-restart --add /Applications/iTerm.app
-dockutil --no-restart --add /Applications/Dashlane.app
 dockutil --no-restart --add /Applications/Google\ Chrome.app
 dockutil --no-restart --add /Applications/Spotify.app
 dockutil --no-restart --add /Applications/Slack.app
